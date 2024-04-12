@@ -1,0 +1,131 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+ul, li {
+    list-style: none;
+}
+
+button.trasparent-button {
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+}
+
+.container {
+    width: 100%;
+    background-color: #f0f0f0;
+    padding: 20px 0;
+}
+
+article.card {
+    width: 600px;
+    margin: 20px auto;
+    margin-bottom: 60px;
+    background-color: #fff;
+    border: 5px solid #c0c0c0;
+    border-radius: 3px;
+}
+
+/*** header 시작 ***/
+
+/* header box */
+article.card header {
+    height: 40px;
+    padding: 10px;
+    border : 1px dotted #000;
+}
+
+/* header 내 이미지, 유저 이름, 버튼 공통 */
+article.card header > div {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* 1. 이미지 박스 */
+.circle-image {
+    height: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+    border : 1px dotted #000;
+}
+
+/* 이미지 박스 내 이미지 */
+.circle-image > img {
+    height: 100%;
+    border-radius: 50%;
+    border : 1px dotted #000;
+}
+
+/* 2. 유저 이름 */
+.card-username {
+    padding: 10px 0;
+    font-weight: 900;
+    line-height: 20px;
+    margin-left: 13px;
+    font-size: 13px;
+    border : 1px dotted #000;
+}
+
+/* 3. 점 세개 박스 */
+.option-more {
+    float: right;
+    padding: 7px;
+    border : 1px dotted #000;
+}
+
+/*** header 종료 ***/
+
+
+/*** content 시작 ***/
+
+/* 버튼들 */
+.card-container {
+    padding: 5px 10px;
+    border : 1px dotted #000;
+}
+
+.card-buttons {
+    padding: 5px 5px;
+    margin-top: 10px;
+    border : 1px dotted #000;
+}
+
+.card-buttons > div {
+    display: inline-block;
+    margin-right: 10px;
+    border : 1px dotted #000;
+}
+
+.card-buttons > div.last-card-button {
+    float: right;
+    margin-right: 0px;
+}
+
+/* 좋아요 */
+.card-likes {
+    padding: 5px;
+    font-size: 13px;
+    font-weight: 900;
+    
+}
+
+/* 본문 */
+.card-content {
+    padding: 2px 5px;
+    font-size: 13px;
+}
+
+.card-content li > div {
+    padding: 1px 0;
+}
+
+.card-content li > div > span {
+    font-weight:900;
+}
+
+.card-content li.comment > div > button{
+    
+}

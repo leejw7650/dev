@@ -1,0 +1,29 @@
+h1 {
+    font-size: 18px;
+    font-weight: 900;
+    color: rgb(255, 0, 255, 1);
+    line-height: 100px;
+}
+
+th {
+    text-align: center;
+    font-weight: 600;
+    color: rgb(0, 255, 0, 1);
+}
+
+a,
+a:visited {
+    color: rgb(0, 255, 255);
+    text-decoration: none;
+    font-weight: 800;
+}
+
+img {
+    width: 100px;
+    height: auto;
+    /* width 나 height 중 하나만 선언해주면 나머지는 auto 가 기본값 */
+}
+
+tr.header {
+    font-size: 50px;
+}

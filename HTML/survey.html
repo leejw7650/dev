@@ -1,0 +1,51 @@
+<script>
+    var list = [
+        {
+            question: "Choose your favorite fruit.",
+            option: [
+                "apple", "banana", "orange"
+            ]
+        },
+        {
+            question: "Choose your favorite food.",
+            option: [
+                "pasta", "pizza", "hamburger"
+            ]
+        },
+        {
+            question: "Choose your favorite animal.",
+            option: [
+                "dog", "cat", "bird"
+            ]
+        }
+    ]
+
+    console.log(list);
+
+    for (var i = 0; i < list.length; i++) {
+        var questionMessage = list[i].question + '\n';
+
+        for (var j = 0; j < list[i].option.length; j++) {
+            questionMessage += (j + 1) + '. ' + list[i].option[j] + '\n';
+        }
+
+        var answer = prompt(questionMessage);
+        while (!list[i].option.includes(answer) && !(answer in list[i].option)) {
+            alert("Choose among the options.");
+            answer = prompt(questionMessage);
+        }
+        if (isNaN(Number(answer))) { // Number 대신 parseInt 도 가능
+            list[i].answer = answer;
+        } else {
+            list[i].answer = list[i].option[Number(answer) - 1];
+        }
+    }
+
+    a.addEventListner('click', function () {
+        alert('안녕');
+    })
+</script>
+
+<body>
+    asdasd
+</body>
