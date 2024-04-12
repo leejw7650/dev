@@ -1,0 +1,53 @@
+.container {
+  display: grid;
+  grid-template-areas:
+    "a b b c d"
+    "e f g h i";
+}
+
+.item {
+  /* width: 60px;
+  height: 60px; */
+  border: 1px solid #000;
+}
+
+.item1 {
+  background: #b8255f;
+  grid-area: a;
+}
+.item2 {
+  background: #db4035;
+  grid-area: b;
+}
+.item3 {
+  background: #ff9933;
+  grid-area: c;
+}
+.item4 {
+  background: #fad000;
+  grid-area: d;
+}
+.item5 {
+  background: #afb83b;
+  grid-area: e;
+}
+.item6 {
+  background: #7ecc49;
+  grid-area: f;
+}
+.item7 {
+  background: #299438;
+  grid-area: g;
+}
+.item8 {
+  background: #6accbc;
+  grid-area: h;
+}
+.item9 {
+  background: #158fad;
+  grid-area: i;
+}
+/* .item10 {
+  background: #14aaf5;
+  grid-area: a;
+} */

@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "id": "0",
+      "email": "leejw7650@naver.com",
+      "pw": "123456",
+      "nickname": "bbak_ddd"
+    },
+    {
+      "id": "0d51",
+      "email": "123123",
+      "pw": "1231231231",
+      "nickname": "23123"
+    },
+    {
+      "id": "29bf",
+      "email": "123123123",
+      "pw": "123123",
+      "nickname": "123123123"
+    }
+  ]
+}

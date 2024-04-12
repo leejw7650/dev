@@ -1,0 +1,69 @@
+.detail-false {
+    text-align: left;
+    background-color: rgba(214, 202, 255, 0.689);
+    padding: 20px 0;
+    margin: 10px;
+    box-sizing: border-box;
+}
+
+.detail-true {
+    text-align: left;
+    background-color: rgba(158, 158, 158, 0.689);
+    padding: 20px 0;
+    margin: 10px;
+    box-sizing: border-box;
+}
+
+.input-new-detail, .bucket-list {
+    width: 50%;
+    margin: 10px auto;
+    border: 1px solid #8f8f8f;
+    padding: 5px;
+}
+
+.bucket-list > h1 {
+    color:#8f00ff;
+    text-align: center;
+}
+
+input {
+    padding: 5px;
+    margin-left: 10px;
+}
+
+button {
+    background-color: rgb(189, 131, 255) ;
+    border: 0;
+    margin: 0 5px;
+    padding: 5px;
+}
+
+button:hover {
+    background-color: rgb(155, 68, 255) ;
+}
+
+.bucket-list > .button-add {
+    margin: 0 5px;
+    height: 40px;
+}
+
+.bucket-list > .button-delete, .bucket-list > .button-back {
+    
+    border: 0;
+    display: block;
+    width: 95%;
+    height: 40px;
+    margin: 10px auto;
+}
+
+.detail-true a, .detail-false a {
+    font-size: 30px;
+    display: block;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    color: #000;
+    text-decoration: none;
+}
+.detail-true a:hover, .detail-false a:hover {
+    color:#8f00ff;
+}

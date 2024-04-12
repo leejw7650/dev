@@ -1,0 +1,85 @@
+* {
+    padding : 0;
+    margin : 0;
+}
+
+ul li {
+    list-style: none;
+}
+
+div.container {
+    width: 70%;
+    margin: 10px auto;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border: 1px solid #000;
+}
+
+header {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+main > div{
+    margin-top: 10px;
+}
+
+.input-group {
+    margin: 10px auto;
+}
+
+form > div {
+    display: inline-block;
+}
+
+.task-group {
+    margin: 10px;
+}
+
+ul.undone {
+    margin-top: 10px;
+    display: inline-table; /* inline-table vs. block 무슨 차이? */
+    width: 40%;
+}
+
+ul.done {
+    margin-top: 10px;
+    display: inline-table; /* inline-table vs. block 무슨 차이? */
+    width: 40%;
+}
+
+.task-group h2 {
+    margin-bottom: 5px;
+}
+
+li.task {
+    width : 100%;
+    border: 3px solid #000;
+    margin-top: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+button.button-remove {
+    display: block;
+    font-size: 20px;
+    margin-left: auto;
+}
+
+div.task-main {
+    width: 70%;
+    box-sizing: border-box;
+    font-size: 20px;
+    font-weight: 900;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+div.task-memo {
+    width: 70%;
+    box-sizing: border-box;
+    font-size: 13px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}

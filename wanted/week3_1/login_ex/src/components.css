@@ -1,0 +1,27 @@
+.user-info-container {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.info-text {
+  width: 30%;
+  text-align: right;
+}
+
+.input-text {
+  width: 30%;
+}
+
+.notice {
+  color: #ff8f8f;
+  width: 30%;
+  opacity: 0;
+  text-align: left;
+}

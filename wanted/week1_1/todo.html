@@ -1,0 +1,29 @@
+
+<html>
+<head></head>
+
+<body>
+
+    <h1 id="mytag">Todo list</h1>
+    <h3 class="mytag2">todo 1</h3>
+    <p>description1</p>
+    <button onclick="changeColor('#ff0000')">button1</button>
+
+    <h3>todo 2</h3>
+    <p>description2</p>
+    <button onclick="changeColor('#00ff00')">button2</button>
+
+    <h3>todo 3</h3>
+    <p>description3</p>
+    <button onclick="changeColor('#0000ff')">button3</button>
+
+    <script>
+        function changeColor (color) {
+            let mytag = document.getElementById('mytag');
+            mytag.style.backgroundColor = color;
+        }
+        
+    </script>
+</body>
+
+</html>
