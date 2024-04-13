@@ -1,17 +1,18 @@
 import { RouterProvider } from "react-router-dom";
 import router from "./router/router";
 import simpleHttpRequest from "./network/request";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { IssueContext } from "./store/IssueContext";
 
 function App() {
-  const userData = useRef();
+  const [isDataFetched, setIsDataFetched] = useState(false);
+  const issueData = useRef([]);
 
   async function fetchData() {
     try {
       const result = await simpleHttpRequest("GET", "/issues");
-      userData.current = result.data;
-      console.log("함수 내부: ", userData.current);
+      issueData.current = result.data;
+      setIsDataFetched(true);
     } catch (error) {
       console.error(error);
     }
@@ -22,8 +23,8 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <IssueContext.Provider value={{ userData }}>
+    <div style={{ padding: "0 10px" }}>
+      <IssueContext.Provider value={{ issueData }}>
         <RouterProvider router={router}></RouterProvider>
       </IssueContext.Provider>
     </div>

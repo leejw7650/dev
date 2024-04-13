@@ -3,11 +3,17 @@ import styled from "styled-components";
 
 const HeadDiv = styled.div`
   width: 100%;
-  text-align: center;
   padding: 5px;
-  background-color: gray;
+  background-color: #fff;
   position: sticky;
   top: 0;
+  box-sizing: border-box;
+  height: 50px;
+  font-size: 1.5em;
+
+  display: flex;
+  justify-content: center; /* Horizontally center */
+  align-items: center; /* Vertically center */
 `;
 
 const Header = () => {

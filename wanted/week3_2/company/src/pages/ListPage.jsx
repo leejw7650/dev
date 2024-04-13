@@ -3,37 +3,55 @@ import Header from "../components/Header";
 import Card from "../components/Card";
 import { Link } from "react-router-dom";
 import { IssueContext } from "../store/IssueContext";
+import catImage from "../cat_image.jpg";
+import styled from "styled-components";
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: #000;
+  &: visited {
+    color: #000;
+  }
+`;
 
 const ListPage = (props) => {
-  const userData = useContext(IssueContext);
-  const users = userData.userData.current;
-
+  const issueData = useContext(IssueContext);
+  const issues = issueData.issueData.current;
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
       <Header />
-      {users.slice(0, 4).map((issue) => {
-        console.log(issue.user);
+      {issues.slice(0, 4).map((issue) => {
+        console.log(issue.id);
         return (
-          <Link to="./detail" key={issue.id}>
+          <StyledLink to={`/detail/${issue.id}`} key={issue.id}>
             <Card issue={issue} />
-          </Link>
+          </StyledLink>
         );
       })}
       <a
-        href="https://thingsflow.com/ko/home"
-        style={{ margin: "5px 20px", border: "2px solid #000", height: "60px" }}
+        href="https://www.wanted.co.kr/"
+        style={{
+          margin: "5px 20px",
+          border: "2px solid #000",
+          height: "60px",
+          overflow: "hidden",
+        }}
       >
         <img
-          width="100%"
-          height="100%"
-          src="https://hellobot-test.s3.ap-northeast-2.amazonaws.com/image/01fdd797-0477-4717-8d70-8551150463f7"
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+          }}
+          src={catImage}
+          alt="Cat"
         ></img>
       </a>
-      {users.slice(4).map((issue) => {
+      {issues.slice(4).map((issue) => {
         return (
-          <Link to="./detail" key={issue.id}>
+          <StyledLink to={`/detail/${issue.id}`} key={issue.id}>
             <Card issue={issue} />
-          </Link>
+          </StyledLink>
         );
       })}
     </div>
