@@ -1,6 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
+const Header = () => {
+  return <HeadDiv>Angular/Angular-cli</HeadDiv>;
+};
+
 const HeadDiv = styled.div`
   width: 100%;
   padding: 5px;
@@ -15,9 +19,5 @@ const HeadDiv = styled.div`
   justify-content: center; /* Horizontally center */
   align-items: center; /* Vertically center */
 `;
-
-const Header = () => {
-  return <HeadDiv>Angular/Angular-cli</HeadDiv>;
-};
 
 export default Header;

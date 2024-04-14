@@ -3,7 +3,7 @@ import ReactMarkdown from "react-markdown";
 
 const MarkdownRenderer = ({ markdown }) => {
   return (
-    <div style={{ padding: "5px", "margin-top": "5px" }}>
+    <div style={{ padding: "5px", marginTop: "5px" }}>
       <ReactMarkdown>{markdown}</ReactMarkdown>
     </div>
   );

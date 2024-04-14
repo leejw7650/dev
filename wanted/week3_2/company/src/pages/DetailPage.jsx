@@ -7,11 +7,9 @@ import MarkdownRenderer from "../components/MarkdownRenderer";
 
 const DetailPage = () => {
   const params = useParams();
-  const issueData = useContext(IssueContext);
-  console.log("detail page(issueData) : ", issueData.issueData.current[0].id);
-  console.log("detail page(params) : ", params.id);
+  const { issueData } = useContext(IssueContext);
 
-  const currentIssue = issueData.issueData.current.filter(
+  const currentIssue = issueData.filter(
     (issue) => issue.id === parseInt(params.id)
   );
   const issueBody = currentIssue[0].body;
@@ -27,8 +25,6 @@ const DetailPage = () => {
         ></img>
         <Card issue={currentIssue[0]} />
       </div>
-
-      {/* <div style={{ "margin-top": "5px" }}>{issueBody}</div> */}
       <MarkdownRenderer markdown={issueBody} />
     </div>
   );

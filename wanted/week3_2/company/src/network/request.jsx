@@ -7,9 +7,9 @@ async function simpleHttpRequest(method = "GET", url = "/", data = {}) {
 
   // Create an Axios instance with the authorization header
   const axiosInstance = axios.create({
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-    },
+    // headers: {
+    //   Authorization: `Bearer ${accessToken}`,
+    // },
   });
 
   // Use the Axios instance to make the request

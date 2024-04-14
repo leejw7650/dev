@@ -5,14 +5,11 @@ import { useEffect, useRef, useState } from "react";
 import { IssueContext } from "./store/IssueContext";
 
 function App() {
-  const [isDataFetched, setIsDataFetched] = useState(false);
-  const issueData = useRef([]);
-
+  const [issueData, setIssueData] = useState([]);
   async function fetchData() {
     try {
       const result = await simpleHttpRequest("GET", "/issues");
-      issueData.current = result.data;
-      setIsDataFetched(true);
+      setIssueData(result.data);
     } catch (error) {
       console.error(error);
     }

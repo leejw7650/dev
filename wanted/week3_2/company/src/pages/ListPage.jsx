@@ -6,22 +6,12 @@ import { IssueContext } from "../store/IssueContext";
 import catImage from "../cat_image.jpg";
 import styled from "styled-components";
 
-const StyledLink = styled(Link)`
-  text-decoration: none;
-  color: #000;
-  &: visited {
-    color: #000;
-  }
-`;
-
 const ListPage = (props) => {
-  const issueData = useContext(IssueContext);
-  const issues = issueData.issueData.current;
+  const { issueData } = useContext(IssueContext);
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
       <Header />
-      {issues.slice(0, 4).map((issue) => {
-        console.log(issue.id);
+      {issueData.slice(0, 4).map((issue) => {
         return (
           <StyledLink to={`/detail/${issue.id}`} key={issue.id}>
             <Card issue={issue} />
@@ -47,7 +37,7 @@ const ListPage = (props) => {
           alt="Cat"
         ></img>
       </a>
-      {issues.slice(4).map((issue) => {
+      {issueData.slice(4).map((issue) => {
         return (
           <StyledLink to={`/detail/${issue.id}`} key={issue.id}>
             <Card issue={issue} />
@@ -57,5 +47,13 @@ const ListPage = (props) => {
     </div>
   );
 };
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: #000;
+  &: visited {
+    color: #000;
+  }
+`;
 
 export default ListPage;
