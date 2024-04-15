@@ -6,7 +6,7 @@ const Card = ({ issue }) => {
   const number = issue.number;
   const issue_title = issue.title;
   const name = issue.user.login;
-  const post_date = format(Date(issue.created_at), "yyyy년 MM월 dd일");
+  const post_date = format(new Date(issue.created_at), "yyyy년 MM월 dd일");
   const comments = issue.comments;
 
   return (
