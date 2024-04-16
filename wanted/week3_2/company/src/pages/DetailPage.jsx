@@ -4,6 +4,7 @@ import Card from "../components/Card";
 import { useLocation, useParams } from "react-router-dom";
 import { IssueContext } from "../store/IssueContext";
 import MarkdownRenderer from "../components/MarkdownRenderer";
+import styled from "styled-components";
 
 const DetailPage = () => {
   const { pathname } = useLocation();
@@ -23,19 +24,20 @@ const DetailPage = () => {
   const userImage = currentIssue.user.avatar_url;
 
   return (
-    <div>
+    <>
       <Header />
       <div style={{ display: "flex" }}>
-        <img
-          style={{ height: "80px", width: "80px" }}
-          src={`${userImage}`}
-          alt="avatar"
-        ></img>
+        <StyledUserImage src={`${userImage}`} alt="avatar"></StyledUserImage>
         <Card issue={currentIssue} />
       </div>
       <MarkdownRenderer markdown={issueBody} />
-    </div>
+    </>
   );
 };
+
+const StyledUserImage = styled.img`
+  height: 80px;
+  width: 80px;
+`;
 
 export default DetailPage;

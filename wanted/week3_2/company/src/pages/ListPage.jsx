@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 import { IssueContext } from "../store/IssueContext";
 import catImage from "../cat_image.jpg";
 import styled from "styled-components";
-import simpleHttpRequest from "../network/request";
+import getDataRequest from "../network/request";
 
 const ListPage = (props) => {
-  const { issueData, setIssueData, pageNum, setPageNum } =
+  const { issueData, setIssueData, pageNum, setPageNum, axiosInstance } =
     useContext(IssueContext);
 
   const sentinelRef = useRef(null);
@@ -21,7 +21,6 @@ const ListPage = (props) => {
   useEffect(() => {
     const observer = new IntersectionObserver(handleIntersection, options);
     observer.observe(sentinelRef.current);
-    console.log(issueData.length);
     return () => {
       observer.disconnect(); // disconnect는 Observer랑 모든 요소를 끊음. unobserve는 특정 요소만 끊음. 여기서는 둘 다 상관없음.
     };
@@ -31,7 +30,11 @@ const ListPage = (props) => {
     entries.forEach(async (entry) => {
       if (entry.isIntersecting) {
         try {
-          const result = await simpleHttpRequest("GET", "/issues", pageNum + 1);
+          const result = await getDataRequest(
+            axiosInstance,
+            "/issues",
+            pageNum + 1
+          );
           setPageNum(pageNum + 1);
           if (result.data.length !== 0) {
             setIssueData([...issueData, ...result.data]);
@@ -57,31 +60,14 @@ const ListPage = (props) => {
           </StyledLink>
         );
       })}
-      <a
-        href="https://www.wanted.co.kr/"
-        style={{
-          margin: "5px 20px",
-          border: "2px solid #000",
-          height: "60px",
-          overflow: "hidden",
-        }}
-      >
-        <img
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-          }}
-          src={catImage}
-          alt="Cat"
-        ></img>
-      </a>
+      <StyledAdBoxA href="https://www.wanted.co.kr/">
+        <StyledAdImage src={catImage} alt="Cat"></StyledAdImage>
+      </StyledAdBoxA>
       {issueData.slice(4).map((issue) => {
         return (
           <StyledLink
             to={`/detail/${issue.id}`}
             key={issue.id}
-            preventScrollReset={false}
             className="issue-card"
           >
             <Card issue={issue} />
@@ -99,6 +85,19 @@ const StyledLink = styled(Link)`
   &:visited {
     color: #000;
   }
+`;
+
+const StyledAdBoxA = styled.a`
+  margin: 5px 20px;
+  border: 2px solid #000;
+  height: 60px;
+  overflow: hidden;
+`;
+
+const StyledAdImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 `;
 
 export default ListPage;
