@@ -2,7 +2,7 @@ import axios from "axios";
 
 async function simpleHttpRequest(method = "GET", url = "/", page = 1) {
   let response = null;
-  const accessToken = "";
+  const accessToken = process.env.REACT_APP_API;
 
   // Create an Axios instance with the authorization header
   const axiosInstance = axios.create({
