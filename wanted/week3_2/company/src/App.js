@@ -20,7 +20,9 @@ function App() {
   async function fetchData() {
     try {
       const result = await getDataRequest(axiosInstance, "/issues", 1);
-      setIssueData(result.data);
+      if (result.data.length !== 0) {
+        setIssueData([...issueData, ...result.data]);
+      }
     } catch (error) {
       console.error(error);
     }
