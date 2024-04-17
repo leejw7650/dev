@@ -52,9 +52,18 @@ const ListPage = (props) => {
       {issueData.map((issue, index) => {
         if (index === 4) {
           return (
-            <StyledAdBoxA href="https://www.wanted.co.kr/">
-              <StyledAdImage src={catImage} alt="Cat"></StyledAdImage>
-            </StyledAdBoxA>
+            <>
+              <StyledAdBoxA href="https://www.wanted.co.kr/">
+                <StyledAdImage src={catImage} alt="Cat"></StyledAdImage>
+              </StyledAdBoxA>
+              <StyledLink
+                to={`/detail/${issue.id}`}
+                key={issue.id}
+                className="issue-card"
+              >
+                <Card issue={issue} />
+              </StyledLink>
+            </>
           );
         }
         return (
