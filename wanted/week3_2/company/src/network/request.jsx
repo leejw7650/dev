@@ -1,4 +1,6 @@
-async function getDataRequest(axiosInstance, url = "/", page = 1) {
+import axiosInstance from "./API";
+
+async function fetchData(url = "/", page = 1) {
   let response = null;
   const params = {
     page: page,
@@ -9,4 +11,4 @@ async function getDataRequest(axiosInstance, url = "/", page = 1) {
   return response;
 }
 
-export default getDataRequest;
+export default fetchData;

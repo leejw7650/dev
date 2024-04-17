@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { format } from "date-fns";
+import { memo } from "react";
 
 const Card = ({ issue }) => {
   const number = issue.number;
@@ -62,4 +63,5 @@ const StyledCardDiv = styled.div`
   }
 `;
 
-export default Card;
+export default memo(Card);
+// export default Card;

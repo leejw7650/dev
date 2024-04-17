@@ -5,11 +5,13 @@ import { Link } from "react-router-dom";
 import { IssueContext } from "../store/IssueContext";
 import catImage from "../cat_image.jpg";
 import styled from "styled-components";
-import getDataRequest from "../network/request";
+import fetchData from "../network/request";
+// import useIssueData from "../network/fetchData";
 
 const ListPage = (props) => {
-  const { issueData, setIssueData, pageNum, setPageNum, axiosInstance } =
+  const { issueData, setIssueData, pageNum, setPageNum } =
     useContext(IssueContext);
+  // const context = useContext(IssueContext);
 
   const sentinelRef = useRef(null);
 
@@ -30,11 +32,7 @@ const ListPage = (props) => {
     entries.forEach(async (entry) => {
       if (entry.isIntersecting) {
         try {
-          const result = await getDataRequest(
-            axiosInstance,
-            "/issues",
-            pageNum + 1
-          );
+          const result = await fetchData("/issues", pageNum);
           setPageNum(pageNum + 1);
           if (result.data.length !== 0) {
             setIssueData([...issueData, ...result.data]);
@@ -42,6 +40,8 @@ const ListPage = (props) => {
         } catch (error) {
           console.error(error);
         }
+        // eslint-disable-next-line react-hooks/rules-of-hooks
+        // useIssueData({...context})
       }
     });
   };
@@ -49,21 +49,14 @@ const ListPage = (props) => {
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
       <Header />
-      {issueData.slice(0, 4).map((issue) => {
-        return (
-          <StyledLink
-            to={`/detail/${issue.id}`}
-            key={issue.id}
-            className="issue-card"
-          >
-            <Card issue={issue} />
-          </StyledLink>
-        );
-      })}
-      <StyledAdBoxA href="https://www.wanted.co.kr/">
-        <StyledAdImage src={catImage} alt="Cat"></StyledAdImage>
-      </StyledAdBoxA>
-      {issueData.slice(4).map((issue) => {
+      {issueData.map((issue, index) => {
+        if (index === 4) {
+          return (
+            <StyledAdBoxA href="https://www.wanted.co.kr/">
+              <StyledAdImage src={catImage} alt="Cat"></StyledAdImage>
+            </StyledAdBoxA>
+          );
+        }
         return (
           <StyledLink
             to={`/detail/${issue.id}`}
@@ -84,7 +77,7 @@ const StyledLink = styled(Link)`
   color: #000;
   &:visited {
     color: #000;
-  }
+  } // 원래 색을 따라감. 따로 색을 줄 것이 아니면
 `;
 
 const StyledAdBoxA = styled.a`
