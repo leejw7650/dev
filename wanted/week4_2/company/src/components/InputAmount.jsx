@@ -1,18 +1,19 @@
 import React from "react";
-import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
+import { inputAmount } from "../redux/slices/exchange";
 
 const InputAmount = () => {
-  const [amount, setAmount] = useState("");
+  const amount = useSelector((state) => state.exchange.amountFrom);
 
+  const dispatch = useDispatch();
   const addComma = (e) => {
-    console.log(e.target.value.length);
     if (e.target.value.length === 0) {
-      setAmount("");
+      // NaN 나오는거 고쳐야함 (문자 입력하면 NaN 나옴)
+      dispatch(inputAmount(""));
       return;
     }
-    let formatted = e.target.value;
-    setAmount(parseInt(formatted.replace(/,/g, "")));
+    dispatch(inputAmount(parseInt(e.target.value.replace(/,/g, ""))));
   };
 
   return (
@@ -23,7 +24,6 @@ const InputAmount = () => {
         min="0"
         placeholder="type..."
       />
-      <>{amount}</>
     </>
   );
 };

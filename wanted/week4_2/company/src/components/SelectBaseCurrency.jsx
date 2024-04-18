@@ -1,20 +1,34 @@
 import React from "react";
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import {
+  selectBaseCurrency,
+  selectTargetCurrency,
+} from "../redux/slices/exchange";
 
 const SelectBaseCurrency = () => {
-  const [currencySelected, setCurrencySelected] = useState("");
-  const currencyList = ["KRW", "USD", "CND", "CHY", "JPY"];
+  const dispatch = useDispatch();
+  const currencyFrom = useSelector((state) => state.exchange.currencyFrom);
+  const currencyList = useSelector((state) => state.exchange.currencyList);
+  console.log(currencyFrom);
   return (
-    <DropCurrencySelect onChange={(event) => setCurrencySelected(event.value)}>
-      {currencyList.map((currency) => {
-        return (
-          <option value={`${currency}`} key={`${currency}`}>
-            {currency}
-          </option>
-        );
-      })}
-    </DropCurrencySelect>
+    <>
+      <DropCurrencySelect
+        value={currencyFrom}
+        onChange={(event) => {
+          dispatch(selectBaseCurrency(event.target.value));
+          dispatch(selectTargetCurrency(""));
+        }}
+      >
+        {currencyList.map((currency) => {
+          return (
+            <option value={`${currency}`} key={`${currency}`}>
+              {currency}
+            </option>
+          );
+        })}
+      </DropCurrencySelect>
+    </>
   );
 }; //compound component
 

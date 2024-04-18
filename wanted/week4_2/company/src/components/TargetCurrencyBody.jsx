@@ -1,11 +1,9 @@
 import React from "react";
-import { useState } from "react";
 import styled from "styled-components";
 import TargetCurrencyTab from "./TargetCurrencyTab";
 import ExchangeInfo from "./ExchangeInfo";
 
 const TargetCurrencyBody = () => {
-  const [amount, setBaseCurrency] = useState(0);
   return (
     <StyledTargetsDiv>
       <TargetCurrencyTab></TargetCurrencyTab>

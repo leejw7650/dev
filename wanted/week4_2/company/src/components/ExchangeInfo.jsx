@@ -1,10 +1,16 @@
 import React from "react";
-import { useState } from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 
 const ExchangeInfo = () => {
-  const [amount, setBaseCurrency] = useState(0);
-  const currencyTo = "USD";
+  const currencyTo = useSelector((state) => state.exchange.currencyTo);
+  let amount = 0;
+  if (!currencyTo) {
+    return (
+      <StyledExchangeDiv>Choose Target Currency Above...</StyledExchangeDiv>
+    );
+  }
+
   return (
     <StyledExchangeDiv>
       <div style={{ margin: "20px", fontWeight: "Bold" }}>

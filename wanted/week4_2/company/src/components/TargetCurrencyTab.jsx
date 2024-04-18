@@ -1,25 +1,26 @@
 import React from "react";
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import { selectTargetCurrency } from "../redux/slices/exchange";
 
 const TargetCurrencyTab = () => {
-  const [amount, setBaseCurrency] = useState(0);
-  const currencyList = ["KRW", "USD", "CND", "CHY", "JPY"];
-  const currencyFrom = "KRW";
+  const dispatch = useDispatch();
+  const currencyFrom = useSelector((state) => state.exchange.currencyFrom);
+  const currencyList = useSelector((state) => state.exchange.currencyList);
   const targets = currencyList.filter((currency) => currency !== currencyFrom);
-  const [currencyTo, setCurrencyTo] = useState([]);
 
   return (
     <StyledTabDiv>
-      {targets.map((currency) => {
+      {targets.map((target) => {
         return (
           <StyledTargetsBtn
-            key={`${currency}`}
+            key={`${target}`}
             onClick={() => {
-              setCurrencyTo(currency);
+              dispatch(selectTargetCurrency(target));
             }}
+            target={target}
           >
-            {currency}
+            {target}
           </StyledTargetsBtn>
         );
       })}
