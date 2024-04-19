@@ -24,6 +24,9 @@ const exchangeSlice = createSlice({
       //action으로부터 현재 환율을 받는다.
       state.exchangeRate = action.payload;
     },
+    refreshDate: (state, action) => {
+      state.date = action.payload;
+    },
   },
 });
 
@@ -32,6 +35,6 @@ export const {
   inputAmount,
   selectBaseCurrency,
   selectTargetCurrency,
-  exchange,
   currentExchangeRate,
+  refreshDate,
 } = exchangeSlice.actions;

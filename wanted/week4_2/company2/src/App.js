@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Calculator from "./components/Calculator";
 import RequestData from "./network/RequestData";
 import { useEffect } from "react";
-import { currentExchangeRate } from "./redux/slices/exchange";
+import { currentExchangeRate, refreshDate } from "./redux/slices/exchange";
 
 function App() {
   const dispatch = useDispatch();
@@ -16,6 +16,7 @@ function App() {
           // symbol 이 여러개 요청되는 현상 해결 하기
           const result = await RequestData(base, symbol);
           dispatch(currentExchangeRate(result.data.rates[`${symbol}`]));
+          dispatch(refreshDate(result.data.date));
         } catch (error) {
           console.error("Error fetching data:", error);
         }
