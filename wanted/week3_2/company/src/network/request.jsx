@@ -8,6 +8,7 @@ async function fetchData(url = "/", page = 1) {
     sort: "comments-desc",
   };
   response = await axiosInstance.get(url, { params: params });
+  console.log(response);
   return response;
 }
 

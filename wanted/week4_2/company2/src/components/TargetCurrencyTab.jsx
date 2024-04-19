@@ -8,7 +8,6 @@ const TargetCurrencyTab = () => {
   const currencyFrom = useSelector((state) => state.exchange.currencyFrom);
   const currencyList = useSelector((state) => state.exchange.currencyList);
   const targets = currencyList.filter((currency) => currency !== currencyFrom);
-
   return (
     <StyledTabDiv>
       {targets.map((target) => {

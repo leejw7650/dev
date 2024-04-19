@@ -4,21 +4,22 @@ import styled from "styled-components";
 
 const ExchangeInfo = () => {
   const currencyTo = useSelector((state) => state.exchange.currencyTo);
-  let amount = 0;
+  const exchangeRate = useSelector((state) => state.exchange.exchangeRate);
+  const amountFrom = useSelector((state) => state.exchange.amountFrom);
+  const date = useSelector((state) => state.exchange.date);
   if (!currencyTo) {
     return (
       <StyledExchangeDiv>Choose Target Currency Above...</StyledExchangeDiv>
     );
   }
-
   return (
     <StyledExchangeDiv>
       <div style={{ margin: "20px", fontWeight: "Bold" }}>
         <span style={{ marginRight: "10px" }}>{currencyTo}</span>
-        <span>{amount}</span>
+        <span>{amountFrom * exchangeRate}</span>
       </div>
       <div style={{ margin: "40px auto 0px 20px" }}>기준일 :</div>
-      <div style={{ margin: "5px auto 20px 20px" }}>"날짜 넣기"</div>
+      <div style={{ margin: "5px auto 20px 20px" }}>{date}</div>
     </StyledExchangeDiv>
   );
 };
