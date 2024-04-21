@@ -13,6 +13,7 @@ const ConditionCard = ({ dayAfter }) => {
   const baseDay = useSelector((state) => state.condition.baseDay);
   const weekDiff = useSelector((state) => state.condition.weekDiff);
   const today = dayjs(baseDay).add(dayAfter, "day").add(weekDiff, "week");
+  const isToday = dayjs(baseDay).isSame(today);
 
   const year = today.year();
   const month = String(today.month() + 1).padStart(2, "0");
@@ -50,7 +51,7 @@ const ConditionCard = ({ dayAfter }) => {
 
   return (
     <ConditionCardDiv>
-      <DateDiv>
+      <DateDiv isToday={isToday}>
         <span className="year">{year}</span>
         <span>/</span>
         <span className="month">{month}</span>
@@ -88,7 +89,7 @@ const DateDiv = styled.div`
   flex-basis: 10em;
   display: flex;
   justify-content: space-between;
-  /* gap: %; */
+  color: ${(props) => (props.isToday ? "#ff0000" : "#000")};
   & > .year {
     width: 40%;
   }

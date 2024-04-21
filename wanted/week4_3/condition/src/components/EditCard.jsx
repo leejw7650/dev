@@ -22,7 +22,7 @@ const EditCard = () => {
 
   return (
     <EditCardDiv>
-      <h4>{date}</h4>
+      <span>{date}</span>
       <StarButtonsDiv>
         {starList.map((bin, idx) => (
           <button
@@ -47,6 +47,10 @@ const EditCardDiv = styled.div`
   font-size: 20px;
   text-align: center;
   height: 50%;
+  & > span {
+    font-size: 25px;
+    margin-top: 15px;
+  }
 `;
 
 const StarButtonsDiv = styled.div`
