@@ -1,3 +1,5 @@
+// 현 프로젝틔 경우엔 아래 custom Hook은 하지 않아도 됨.
+
 import fetchData from "./request";
 
 async function useIssueData(context) {
