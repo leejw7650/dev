@@ -2,9 +2,11 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { inputConditionToday } from "../redux/slices/condition";
+import { useParams } from "react-router-dom";
 
 const EditCard = () => {
   const dispatch = useDispatch();
+  const { date } = useParams();
   const conditionToday = useSelector((state) => state.condition.conditionToday);
   const starList = [
     ...Array(conditionToday).fill(1),
@@ -19,30 +21,41 @@ const EditCard = () => {
   };
 
   return (
-    <div>
-      {starList.map((bin, idx) => (
-        <StyledStarButton
-          key={idx}
-          onClick={() => {
-            dispatch(inputConditionToday(idx + 1));
-          }}
-        >
-          {bin ? "★" : "☆"}
-        </StyledStarButton>
-      ))}
-      <div>
-        <button onClick={() => dispatch(inputConditionToday(0))}>초기화</button>
-        <button>저장</button>
-      </div>
-    </div>
+    <EditCardDiv>
+      <h4>{date}</h4>
+      <StarButtonsDiv>
+        {starList.map((bin, idx) => (
+          <button
+            key={idx}
+            onClick={() => {
+              dispatch(inputConditionToday(idx + 1));
+            }}
+          >
+            {bin ? "★" : "☆"}
+          </button>
+        ))}
+      </StarButtonsDiv>
+    </EditCardDiv>
   );
 };
 
-const StyledStarButton = styled.button`
-  font-size: 50px;
-  padding: 2px;
-  background: none;
-  border: none;
+const EditCardDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  justify-content: space-evenly;
+  font-size: 20px;
+  text-align: center;
+  height: 50%;
+`;
+
+const StarButtonsDiv = styled.div`
+  & > button {
+    font-size: 50px;
+    padding: 2px;
+    background: none;
+    border: none;
+  }
 `;
 
 export default EditCard;

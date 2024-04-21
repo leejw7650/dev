@@ -6,7 +6,7 @@ const conditionSlice = createSlice({
   initialState: {
     weekDiff: 0,
     baseDay: dayjs().toISOString(),
-    conditionToday: 5,
+    conditionToday: 0,
   },
   reducers: {
     inputConditionToday: (state, action) => {

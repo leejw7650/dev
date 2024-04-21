@@ -9,11 +9,9 @@ const MainPage = () => {
   const dispatch = useDispatch();
   const baseDay = useSelector((state) => state.condition.baseDay);
   const today = dayjs(baseDay);
-
   return (
     <MainPageDiv>
-      <h1>Main Page</h1>
-
+      <HeaderDiv>Main Page</HeaderDiv>
       <ConditionListDiv>
         {[0, 1, 2, 3, 4, 5, 6].map((dayAfter) => (
           <ConditionCard
@@ -29,7 +27,7 @@ const MainPage = () => {
             dispatch(changeWeek(-1));
           }}
         >
-          ← last week
+          ← Last Week
         </button>
 
         <button
@@ -37,7 +35,7 @@ const MainPage = () => {
             dispatch(resetWeek());
           }}
         >
-          today
+          Today
         </button>
 
         <button
@@ -45,7 +43,7 @@ const MainPage = () => {
             dispatch(changeWeek(+1));
           }}
         >
-          next week →
+          Next Week →
         </button>
       </ButtonsDiv>
     </MainPageDiv>
@@ -56,8 +54,15 @@ const MainPageDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
   height: 100%;
+`;
+
+const HeaderDiv = styled.div`
+  margin-top: 10%;
+  font-weight: 700;
+  font-size: 2em;
+  height: 10%;
 `;
 
 const ConditionListDiv = styled.div`
@@ -74,6 +79,7 @@ const ButtonsDiv = styled.div`
   justify-content: center;
   gap: 5%;
   border: none;
+  margin-bottom: 5%;
   & > button {
     font-size: 20px;
     padding: 5px 20px;
@@ -84,3 +90,4 @@ const ButtonsDiv = styled.div`
 `;
 
 export default MainPage;
+export { HeaderDiv, ButtonsDiv };
